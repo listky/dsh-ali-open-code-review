@@ -26,6 +26,7 @@ if (args.length === 1 && ['--help', '-h'].includes(args[0])) {
       en: 'Reuses Alibaba Open Code Review in DeepSeek Harness for native and host-model reviews, scanning, rules, sessions, and reports.',
       zh: '针对 Alibaba Open Code Review 开发的 DeepSeek Harness 插件，复用原生与宿主模型审查、扫描、规则、会话和报告。',
     },
+    tarball: `${repository}/releases/download/v${manifest.version}/${manifest.name}-${manifest.version}.tgz`,
   };
   const directory = join(packageRoot, 'release');
   await mkdir(directory, { recursive: true });

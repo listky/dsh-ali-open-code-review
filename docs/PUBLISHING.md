@@ -1,13 +1,13 @@
 # 开源、npm 发布与商店收录
 
-本插件使用 Apache-2.0，并明确基于 [alibaba/open-code-review](https://github.com/alibaba/open-code-review) 为 DeepSeek Harness 开发。公开仓库、npm 发布与商店收录各有独立操作；打包成功表示本地可分发，商店收录以目录 PR 合并为准。
+本插件使用 Apache-2.0，并明确基于 [alibaba/open-code-review](https://github.com/alibaba/open-code-review) 为 DeepSeek Harness 开发。源码已公开于 [listky/dsh-ali-open-code-review](https://github.com/listky/dsh-ali-open-code-review)，通过 GitHub Release 提供 `.tgz` 分发。npm 发布与商店收录各有独立操作，商店收录以目录 PR 合并为准。
 
 ## 准备公开仓库
 
-1. 在自己的 GitHub 账号 `listky` 下创建公开仓库 `dsh-ali-open-code-review`，对应 URL 为 `https://github.com/listky/dsh-ali-open-code-review`。
+1. 核对公开仓库 `listky/dsh-ali-open-code-review`，对应 URL 为 `https://github.com/listky/dsh-ali-open-code-review`。
 2. 将代码、`LICENSE`、`NOTICE`、上游版本记录和 README 提交到该仓库。README 开头必须保留本插件与上游的关系和功能复用说明。
 3. 核对 `package.json` 的 `repository.url`、`homepage` 与 `bugs.url` 指向该仓库，包名为 `dsh-ali-open-code-review`，与 `cordis.patch.yml` 一致。
-4. 将仓库设为 public，添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic。
+4. 保持仓库为 public，保留 [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic。
 
 发布前再次确认 `dsh-ali-open-code-review` 的 npm 名称可用性及当前账号的发布权限。
 
@@ -63,7 +63,13 @@ npm publish --access public
 dsh plugin --profile code-review add --ignore-scripts dsh-ali-open-code-review
 ```
 
-公开 GitHub 仓库也可提供直接源码安装：
+GitHub 分发也可用于商店收录，无需先完成 npm 发布。固定版本 tarball 的安装方式为：
+
+```sh
+dsh plugin --profile code-review add --ignore-scripts https://github.com/listky/dsh-ali-open-code-review/releases/download/v0.1.0/dsh-ali-open-code-review-0.1.0.tgz
+```
+
+公开 GitHub 仓库可提供直接源码安装：
 
 ```sh
 dsh plugin --profile code-review add --ignore-scripts github:listky/dsh-ali-open-code-review
@@ -71,7 +77,7 @@ dsh plugin --profile code-review add --ignore-scripts github:listky/dsh-ali-open
 
 ## 提交社区插件商店
 
-[awesome-dsh-plugin/awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 是社区插件目录；dshmarket 等店面读取该目录。请先阅读其当前 [贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)。以下要求于 2026-11-26 核对：
+[awesome-dsh-plugin/awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 是社区插件目录；dshmarket 等店面读取该目录。请先阅读其当前 [贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/CONTRIBUTING.md)。以下要求于 2026-11-26 核对：
 
 - 公开 GitHub 仓库创建至少 **1 天**，包含可用代码与 `dsh.bundle`。
 - 添加 `dsh-plugin` topic，保持维护。
@@ -89,6 +95,7 @@ npm run marketplace -- --repository https://github.com/listky/dsh-ali-open-code-
 url: https://github.com/listky/dsh-ali-open-code-review
 name: listky/dsh-ali-open-code-review
 category: git
+tarball: https://github.com/listky/dsh-ali-open-code-review/releases/download/v0.1.0/dsh-ali-open-code-review-0.1.0.tgz
 description:
   en: 'Reuses Alibaba Open Code Review in DeepSeek Harness for native and host-model reviews, scanning, rules, sessions, and reports.'
   zh: '针对 Alibaba Open Code Review 开发的 DeepSeek Harness 插件，复用原生与宿主模型审查、扫描、规则、会话和报告。'
@@ -104,4 +111,4 @@ description:
 
 需要本地检查目录条目时，在商店仓库运行其 `npm ci` 与 `node scripts/generate-readme.mjs`。只将所需条目提交到 PR；收录完成后核对生成的目录与店面展示。
 
-新建仓库未满一天时，应先完成公开代码与功能验证，到达目录规定的时间后再申请。上游或商店规范变更时，以对应项目的当前规则为准。
+仓库创建满一天是目录 CI 的要求。未满一天时可先创建 **draft PR**，明确说明等待仓库年龄门槛、不请求审核，并保持年龄要求的 checkbox 未勾选。draft 仍会触发 CI，不能豁免年龄检查。满一天后再切换为 ready，等待检查重跑与维护者审核；满足年龄要求不表示立即上架。draft 与待审 PR 都是收录申请，商店上架完成以维护者合并目录 PR 为准。上游或商店规范变更时，以对应项目的当前规则为准。

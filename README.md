@@ -38,7 +38,13 @@ dsh --profile code-review
 
 把 `code-review` 换成你实际使用的 profile；安装、更新或移除后重启该 profile。插件分发的是可直接执行的 ESM JavaScript，无需本插件的编译或 `prepare` 脚本。`--ignore-scripts` 跳过官方 OCR 依赖的 `postinstall`，避免 DSH 的严格依赖脚本策略阻止安装；对应平台的 optional npm 包已携带原生二进制，插件会检查它是否存在。保留 optional dependencies，二进制缺失时会明确报错。
 
-也可以分发 tarball：
+从 GitHub Release 安装固定版本：
+
+```sh
+dsh plugin --profile code-review add --ignore-scripts https://github.com/listky/dsh-ali-open-code-review/releases/download/v0.1.0/dsh-ali-open-code-review-0.1.0.tgz
+```
+
+也可以本地打包并安装 tarball：
 
 ```sh
 npm pack
@@ -51,7 +57,7 @@ dsh plugin --profile code-review add --ignore-scripts ./dsh-ali-open-code-review
 dsh plugin --profile code-review add --ignore-scripts dsh-ali-open-code-review
 ```
 
-公开仓库发布后，也可直接从 GitHub 源码安装：
+也可直接从公开 GitHub 仓库安装源码：
 
 ```sh
 dsh plugin --profile code-review add --ignore-scripts github:listky/dsh-ali-open-code-review
@@ -135,7 +141,7 @@ npm test
 npm pack --dry-run
 ```
 
-检查覆盖插件入口、打包合同、上游资源 SHA-256 和无需模型凭据的 CLI 行为；真实原生模型审查需要配置有效 OCR provider 后另行运行。
+检查覆盖插件入口、打包合同、上游资源 SHA-256 和无需模型凭据的 CLI 行为。已在 Windows 的独立 profile 中安装 tarball 并实际启动 **DSH 0.2.2-rc.5**：两个工具、两个技能及资源均可加载，`open_code_review` 的版本调用返回 `ok: true` 与 OCR v1.14.4。真实原生模型审查需配置有效 OCR provider 后运行。
 
 当前复用版本为 **Open Code Review v1.14.4**，源码 commit 为 `d4f568f71d3a9d5c5ec972791b1509e40cd31ad1`。升级应同时更新 CLI 依赖与技能资源，并复核行为合同，见 [贡献指南](CONTRIBUTING.md)。
 
@@ -149,9 +155,9 @@ npm pack --dry-run
 
 ## 开源与插件商店
 
-本插件包名为 `dsh-ali-open-code-review`，计划发布到 [listky/dsh-ali-open-code-review](https://github.com/listky/dsh-ali-open-code-review)。本仓库提供 npm bundle、许可与归属文件以及发布说明。实际 npm 发布、GitHub 公开仓库和商店收录是独立步骤；操作方法见 [开源与上架指南](docs/PUBLISHING.md)。
+本插件包名为 `dsh-ali-open-code-review`，已开源于 [listky/dsh-ali-open-code-review](https://github.com/listky/dsh-ali-open-code-review)，并提供 GitHub Release tarball 分发。npm 发布与商店收录按各自流程进行，见 [开源与上架指南](docs/PUBLISHING.md)。
 
-社区插件商店通过 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 收录，要求公开仓库创建满一天、添加 `dsh-plugin` topic，并提交一个插件 YAML 条目。完成代码与打包验证后，再按商店当前规则申请收录。
+社区插件商店通过 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 收录，要求公开仓库创建满一天、添加 `dsh-plugin` topic，并提交一个插件 YAML 条目。仓库未满一天时可先准备 draft PR，draft 仍须通过年龄检查；满一天后再转为 ready，等待重检与审核。商店收录以维护者合并为准。
 
 ## 致谢
 

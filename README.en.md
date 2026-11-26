@@ -34,7 +34,13 @@ dsh --profile code-review
 
 Replace `code-review` with your intended profile. Restart that profile after installing, updating, or removing the bundle. This plugin ships executable ESM JavaScript and needs no build or `prepare` script. `--ignore-scripts` skips the official OCR dependency's `postinstall`, avoiding DSH's strict dependency-script gate. The matching optional npm platform package already contains the native executable, which the plugin checks before running. Keep optional dependencies enabled; a missing binary produces an explicit error.
 
-To install a tarball:
+Install a fixed version from GitHub Release:
+
+```sh
+dsh plugin --profile code-review add --ignore-scripts https://github.com/listky/dsh-ali-open-code-review/releases/download/v0.1.0/dsh-ali-open-code-review-0.1.0.tgz
+```
+
+Or package and install a local tarball:
 
 ```sh
 npm pack
@@ -47,7 +53,7 @@ After publication to npm:
 dsh plugin --profile code-review add --ignore-scripts dsh-ali-open-code-review
 ```
 
-After publishing the public repository, install directly from GitHub source:
+Install directly from the public GitHub source:
 
 ```sh
 dsh plugin --profile code-review add --ignore-scripts github:listky/dsh-ali-open-code-review
@@ -129,9 +135,11 @@ npm test
 npm pack --dry-run
 ```
 
+The tarball has been installed in an independent Windows profile and run with **DSH 0.2.2-rc.5**. Both tools, both skills, and their resources loaded; the version call through `open_code_review` returned `ok: true` and OCR v1.14.4. Native model reviews require a configured OCR provider.
+
 The fixed upstream version is **v1.14.4**, commit `d4f568f71d3a9d5c5ec972791b1509e40cd31ad1`. Update the dependency and vendored skills together. See [CONTRIBUTING](CONTRIBUTING.md).
 
-The package name is `dsh-ali-open-code-review`; its planned public repository is [listky/dsh-ali-open-code-review](https://github.com/listky/dsh-ali-open-code-review). Local packaging, npm publication, and marketplace acceptance are separate steps. See the [publishing guide](docs/PUBLISHING.md). The community storefront uses the [awesome-dsh-plugin catalog](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin); listing requires a public repository at least one day old, the `dsh-plugin` topic, and one YAML submission file.
+The package name is `dsh-ali-open-code-review`. Its source is public at [listky/dsh-ali-open-code-review](https://github.com/listky/dsh-ali-open-code-review), with tarball distribution through GitHub Releases. npm publication and marketplace acceptance follow their respective procedures; see the [publishing guide](docs/PUBLISHING.md). The community storefront uses the [awesome-dsh-plugin catalog](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin). Listing requires a public repository at least one day old, the `dsh-plugin` topic, and one YAML submission file. A draft PR may be prepared before the age requirement is met; its age check still applies. Mark it ready afterward and wait for checks and review. Marketplace acceptance requires a maintainer to merge it.
 
 ## Attribution
 
