@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/alibaba/open-code-review",
+  "tag": "v1.14.4",
+  "commit": "d4f568f71d3a9d5c5ec972791b1509e40cd31ad1",
+  "tagObject": "f73addb621d6e64da9ee852c2499bcd82eaa2214",
+  "npmPackage": "@alibaba-group/open-code-review",
+  "npmVersion": "1.14.4",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "1945665fdb6968a66ea29438ddee0aee23035365c862e5c4a75b62b303340acf"
+    },
+    {
+      "path": "skills/open-code-review/SKILL.md",
+      "sha256": "7f2088c9df9a1044c04662ef1e46f81bc4da0fd9318e651df6c5c6894485e36f"
+    },
+    {
+      "path": "skills/open-code-review-delegate/SKILL.md",
+      "sha256": "4e804ebeaf5938eafa3b2b40a079c41066150438f916bd0294119f395804add4"
+    },
+    {
+      "path": "skills/open-code-review/scripts/review_pr.py",
+      "sha256": "73e9ea139078398ec84e4c138b91f01e54ff91555e4b0f8768fb97e3b171bdf9"
+    }
+  ]
+}

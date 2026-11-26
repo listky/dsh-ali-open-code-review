@@ -1,0 +1,96 @@
+{
+  "name": "dsh-ali-open-code-review",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin for Alibaba Open Code Review: the complete upstream OCR CLI, native and delegated review skills, and GitHub PR snapshots.",
+  "license": "Apache-2.0",
+  "author": "listky",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "bin": {
+    "dsh-ocr": "./bin/dsh-ocr.js"
+  },
+  "icon": "./assets/icon.svg",
+  "files": [
+    "src/",
+    "bin/",
+    "assets/icon.svg",
+    "locale/",
+    "vendor/open-code-review/",
+    "cordis.patch.yml",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "README.en.md",
+    "CONTRIBUTING.md",
+    "scripts/",
+    "tests/",
+    "docs/FEATURES.md",
+    "docs/PUBLISHING.md"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listky/dsh-ali-open-code-review.git"
+  },
+  "homepage": "https://github.com/listky/dsh-ali-open-code-review#readme",
+  "bugs": {
+    "url": "https://github.com/listky/dsh-ali-open-code-review/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "open-code-review",
+    "alibaba",
+    "code-review",
+    "agent-skills",
+    "sarif"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "vendor:check": "node scripts/sync-upstream.mjs --check",
+    "vendor:sync": "node scripts/sync-upstream.mjs --sync",
+    "marketplace": "node scripts/marketplace.mjs",
+    "prepack": "npm run check",
+    "prepublishOnly": "npm run check && npm test"
+  },
+  "dependencies": {
+    "@alibaba-group/open-code-review": "1.14.4",
+    "yaml": "^2.8.2"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.1.0",
+    "@deepseek-ai/schemastery": "^3.19.0",
+    "@deepseek-ai/dsh-tools": "^0.2.2-rc.5",
+    "@deepseek-ai/dsh-skill": "^0.2.2-rc.5",
+    "@deepseek-ai/dsh-subprocess": "^0.2.2-rc.5",
+    "@deepseek-ai/dsh-sandbox": "^0.2.2-rc.5",
+    "@deepseek-ai/dsh-sandbox-policy": "^0.2.2-rc.5"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.1.0",
+    "@deepseek-ai/schemastery": "3.19.0",
+    "@deepseek-ai/dsh-tools": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-skill": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-subprocess": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-sandbox": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-sandbox-policy": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-system-prompt": "0.2.2-rc.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

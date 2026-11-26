@@ -1,0 +1,9 @@
+node_modules/
+*.tgz
+coverage/
+__pycache__/
+*.pyc
+.dsh/
+.opencodereview/
+.env
+.env.*

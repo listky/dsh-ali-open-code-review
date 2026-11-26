@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "阿里 Open Code Review",
+    "description": "针对 alibaba/open-code-review 的 DeepSeek Harness 插件，复用原生审查、宿主模型审查、扫描、规则、会话与报告功能。"
+  }
+}

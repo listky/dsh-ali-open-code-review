@@ -1,0 +1,27 @@
+dsh-ali-open-code-review
+Copyright 2026 listky and dsh-ali-open-code-review Contributors
+
+This project is an independent DeepSeek Harness (dsh) plugin specifically for
+Alibaba's Open Code Review project:
+https://github.com/alibaba/open-code-review
+
+Open Code Review is licensed under the Apache License, Version 2.0.
+Copyright 2026 alibaba/open-code-review Contributors
+
+The review engine is reused through the unmodified official npm dependency
+@alibaba-group/open-code-review, pinned to version 1.14.4. The complete native
+CLI remains the authority for review, scanning, rules, configuration, sessions,
+model providers, and reports.
+
+The files in vendor/open-code-review are unmodified copies of the upstream
+Apache-2.0 LICENSE, canonical native and delegation skills, and GitHub PR
+helper at tag v1.14.4, commit d4f568f71d3a9d5c5ec972791b1509e40cd31ad1.
+Their exact provenance and SHA-256 checksums are in UPSTREAM.json.
+
+The dsh bundle, tool registration, executable binding, locale metadata,
+documentation, and verification scripts are adaptations by this project.
+DSH-specific instructions are added at skill load time; vendored instructions
+and the upstream review implementation are not rewritten.
+
+This project is not an official Alibaba or DeepSeek release. Product and
+project names identify compatibility and upstream attribution only.
